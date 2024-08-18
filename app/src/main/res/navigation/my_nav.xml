@@ -36,12 +36,12 @@
     </fragment>
     <fragment
         android:id="@+id/processingScreen"
-        android:name="com.example.videoconversion.ProcessingScreen"
+        android:name="com.example.videoconversion.fragments.ProcessingScreen"
         android:label="fragment_processing_screen"
         tools:layout="@layout/fragment_processing_screen" />
     <fragment
         android:id="@+id/selectVideoFragment"
-        android:name="com.example.videoconversion.SelectVideoFragment"
+        android:name="com.example.videoconversion.fragments.SelectVideoFragment"
         android:label="fragment_select_video"
         tools:layout="@layout/fragment_select_video" >
         <action
