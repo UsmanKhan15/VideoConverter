@@ -7,22 +7,45 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.videoconversion.SplashFragment"
+        android:name="com.example.videoconversion.fragments.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.videoconversion.HomeFragment"
+        android:name="com.example.videoconversion.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_selectVideoFragment2"
+            app:destination="@id/selectVideoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/videoProcessing"
         android:name="com.example.videoconversion.VideoProcessing"
         android:label="fragment_video_processing"
-        tools:layout="@layout/fragment_video_processing" />
+        tools:layout="@layout/fragment_video_processing" >
+        <action
+            android:id="@+id/action_videoProcessing_to_processingScreen"
+            app:destination="@id/processingScreen" />
+    </fragment>
     <fragment
         android:id="@+id/processingScreen"
         android:name="com.example.videoconversion.ProcessingScreen"
         android:label="fragment_processing_screen"
         tools:layout="@layout/fragment_processing_screen" />
+    <fragment
+        android:id="@+id/selectVideoFragment"
+        android:name="com.example.videoconversion.SelectVideoFragment"
+        android:label="fragment_select_video"
+        tools:layout="@layout/fragment_select_video" >
+        <action
+            android:id="@+id/action_selectVideoFragment_to_videoProcessing"
+            app:destination="@id/videoProcessing" />
+    </fragment>
 </navigation>

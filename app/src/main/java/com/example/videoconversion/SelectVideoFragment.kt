@@ -5,12 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.videoconversion.databinding.FragmentVideoProcessingBinding
+import com.example.videoconversion.databinding.FragmentSelectVideoBinding
 
-class VideoProcessing : Fragment() {
-    private val binding by lazy {
-        FragmentVideoProcessingBinding.inflate(layoutInflater)
-    }
+class SelectVideoFragment : Fragment() {
+   private val binding by lazy {
+       FragmentSelectVideoBinding.inflate(layoutInflater)
+   }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
