@@ -13,15 +13,21 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.videoconversion.R
 import com.example.videoconversion.Video
 import com.example.videoconversion.VideoAdapter
 import com.example.videoconversion.databinding.FragmentSelectVideoBinding
+import com.example.videoconversion.viewmodel.SharedViewModel
 
 class SelectVideoFragment : Fragment() {
     private val binding by lazy {
         FragmentSelectVideoBinding.inflate(layoutInflater)
     }
+
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
     private val PERMISSION_REQUEST_READ_EXTERNAL_STORAGE = 1001
     private lateinit var videoAdapter: VideoAdapter
@@ -40,6 +46,15 @@ class SelectVideoFragment : Fragment() {
         // Initialize the RecyclerView and Adapter
         setupRecyclerView()
 
+        binding.textView7.setOnClickListener {
+            if(sharedViewModel.videoUri.value != null) {
+                findNavController().navigate(R.id.action_selectVideoFragment_to_videoProcessing)
+            }
+            else
+            {
+                Toast.makeText(requireContext(), "Please select a video", Toast.LENGTH_SHORT).show()
+            }
+        }
         // Check for permission to read external storage
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
@@ -59,7 +74,8 @@ class SelectVideoFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        videoAdapter = VideoAdapter(videoList)
+        val sharedViewModel: SharedViewModel by activityViewModels()
+        videoAdapter = VideoAdapter(videoList, sharedViewModel)
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3) // 3 videos per row
             adapter = videoAdapter
